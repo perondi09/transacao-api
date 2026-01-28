@@ -20,7 +20,7 @@ public class TransacaoService {
 
     public void adicionarTransacao(TransacaoRequestDTO dto) {
 
-        log.info("Iniciado a gravação de transações");
+        log.info("Iniciado a gravação de transações" +  dto.toString());
 
         if (dto.dataHora().isAfter(OffsetDateTime.now())) {
             log.error("Data e hora maiores que data atual.");
@@ -33,18 +33,23 @@ public class TransacaoService {
         }
 
         listaTransacao.add(dto);
+        log.info("Transação feito com sucesso");
     }
 
-    public void listarTransacoes(){
+    public void limparTransacoes(){
 
+        log.info("Iniciando processamento para deletar transacoes");
         listaTransacao.clear();
+        log.info("Deletada com sucesso");
 
     }
 
     public List<TransacaoRequestDTO> buscarTransacoes(Integer intervaloBusca){
 
+        log.info("Iniciando processamento para deletar transacoes" +  intervaloBusca);
         OffsetDateTime dataHoraIntervalo = OffsetDateTime.now().minusSeconds(intervaloBusca);
 
+        log.info("Retorno feito com sucesso");
         return listaTransacao.stream().filter(transacao -> transacao.dataHora().isAfter(dataHoraIntervalo)).toList();
 
     }
