@@ -1,7 +1,7 @@
 package com.perondi.transacao_api.business.services;
 
 import com.perondi.transacao_api.controller.dtos.TransacaoRequestDTO;
-import com.perondi.transacao_api.infrastructure.exeptions.UnprocessableEntity;
+import com.perondi.transacao_api.infrastructure.exceptions.UnprocessableEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
