@@ -42,7 +42,7 @@ cd minha-biblioteca
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `valor` | `BigDecimal` | **Obrigatório**. O valor da transação 
+| `valor` | `Double` | **Obrigatório**. O valor da transação 
 | `dataHora` | `OffsetDateTime` | **Obrigatório**. O horário que a transação ocorreu
 
 #### Limpar Transações
