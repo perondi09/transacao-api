@@ -1,8 +1,6 @@
-# 📊 API Transação
+# 📊 BeShuffle
 
-Este projeto é uma API REST para gerenciar transações e calcular estatísticas das transações realizadas nos últimos 60 segundos. A API foi desenvolvida com Java e Spring Boot.
-
-Inspirado no desafio tecnico Itaú Unibanco: https://github.com/feltex/desafio-itau-backend
+Projeto criado para ajudar pessoas curiosas como eu, BeShuffle é uma aplicação que todo dia irá indicar um álbum novo para conhecer novos artistas e novos estilos musicais.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -27,40 +25,69 @@ git clone https://github.com/perondi09/minha-biblioteca.git
 ```
 
 2. Acesse a pasta do projeto:
-
 ```bash
 cd minha-biblioteca
 ```
 
 ## 📍 Endpoints da Aplicação
 
-#### Receber Transações
-
+### Registrar Álbum do Dia
 ```http
-  POST /transacao
+POST /api/albums/today
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `valor` | `Double` | **Obrigatório**. O valor da transação 
-| `dataHora` | `OffsetDateTime` | **Obrigatório**. O horário que a transação ocorreu
+Registra ou atualiza o álbum indicado para o dia atual.
 
-#### Limpar Transações
-
-```http
-  DELETE /transacao
+**Resposta de sucesso `200 OK`:**
+```json
+{
+    "id": 1,
+    "spotifyAlbumId": "0I8i8NKTztZQJiQCkUSA63",
+    "albumName": "INDUSTRY MACHINE",
+    "artistName": "ODUMODUBLVCK",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273739fcfc70e236250bbe577d1",
+    "albumUrl": "spotify:album:0I8i8NKTztZQJiQCkUSA63",
+    "releaseDate": "2025-10-05",
+    "displayDate": "2026-03-22"
+}
 ```
 
-#### Calcular Estatísticas
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `id` | `integer` | Identificador interno do registro |
+| `spotifyAlbumId` | `string` | ID do álbum no Spotify |
+| `albumName` | `string` | Nome do álbum |
+| `artistName` | `string` | Nome do artista |
+| `imageUrl` | `string` | URL da capa do álbum |
+| `albumUrl` | `string` | URI do álbum no Spotify |
+| `releaseDate` | `string` | Data de lançamento original do álbum |
+| `displayDate` | `string` | Data em que o álbum foi exibido no BeShuffle |
 
+---
+
+### Buscar Álbum do Dia
 ```http
-  GET /estatistica
+GET /api/albums/today
 ```
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `intervaloSegundos` | `integer` | **Não Obrigatório** O padrão default é 60s  |
+Retorna o álbum indicado para o dia atual.
+
+**Resposta de sucesso `200 OK`:**
+```json
+{
+    "id": 1,
+    "spotifyAlbumId": "0I8i8NKTztZQJiQCkUSA63",
+    "albumName": "INDUSTRY MACHINE",
+    "artistName": "ODUMODUBLVCK",
+    "imageUrl": "https://i.scdn.co/image/ab67616d0000b273739fcfc70e236250bbe577d1",
+    "albumUrl": "spotify:album:0I8i8NKTztZQJiQCkUSA63",
+    "releaseDate": "2025-10-05",
+    "displayDate": "2026-03-22"
+}
+```
+
+---
 
 ## 👨‍💻 Autor
 
-Desenvolvido por **Guilherme Perondi** - [Linkedin](https://www.linkedin.com/in/guilherme-perondi/)
+Desenvolvido por **Guilherme Perondi** - [LinkedIn](https://www.linkedin.com/in/guilherme-perondi/)
